@@ -1,0 +1,19 @@
+from query.models import Player
+
+def query1(use_mpg, min_mpg, max_mpg, use_ppg, min_ppg, max_ppg,  use_rpg,  min_rpg,  max_rpg, use_apg,  min_apg, max_apg, use_spg,  min_spg, max_spg,\
+            use_bpg,  min_bpg,  max_bpg):
+    temp = Player.objects
+    if use_mpg:
+        temp = temp.filter(mpg__gte=min_mpg).filter(mpg__lte=max_mpg)
+    if use_ppg:
+        temp = temp.filter(ppg__gte=min_ppg).filter(ppg__lte=max_ppg)
+    if use_rpg:
+        temp = temp.filter(rpg__gte=min_rpg).filter(rpg__lte=max_rpg)
+    if use_apg:
+        temp = temp.filter(apg__gte=min_apg).filter(apg__lte=max_apg)
+    if use_spg:
+        temp = temp.filter(spg__gte=min_spg).filter(spg__lte=max_spg)
+    if use_bpg:
+        temp = temp.filter(bpg__gte=min_bpg).filter(bpg__lte=max_bpg)
+    return temp
+query1(1, 35, 40, 0, 3, 15, 0, 1, 7, 0, 1, 15, 0, 0.1, 0.4, 0, 0.2, 0.8)
